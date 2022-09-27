@@ -82,4 +82,36 @@ console.log(getWeather(cleveland));
 //temp from Default: Kelvin to Fahrenheit.
   function kToF(K) {
         return Math.floor((K - 273.15) * 1.8 + 32);
-    
+  }
+
+ function movieAddress(){
+  var myHeaders = new Headers();
+myHeaders.append("client", "CASE");
+myHeaders.append("x-api-key", "	j25XOEFpKu6Tfx1iQWGZb4NqNhB88bwa8mJYCrYy");
+myHeaders.append("authorization", "Basic Q0FTRTpKblNFeWVodFIzazA=");
+myHeaders.append("territory", "US");
+myHeaders.append("api-version", "v200");
+myHeaders.append("geolocation", "33.7625933;-88.1789098");
+myHeaders.append("device-datetime", "2022-09-25T14:06:21.449Z");
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+fetch("https://api-gate2.movieglu.com/cinemasNearby/?n=5", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+}
+
+var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+  
+  fetch("http://api.positionstack.com/v1/forward?access_key=9f08f8d22fa6d0f7ccebc2af0aee748b&query=vernon,al", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
