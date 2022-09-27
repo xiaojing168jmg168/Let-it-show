@@ -5,38 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Let It Show</title>
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css" />
 </head>
-<body>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator</title>
-    <link rel="stylesheet" href="assets/style.css" />
-  </head>
   <body>
     <div class="wrapper">
       <header>
-        <h1>Let It Show</h1>
+        <h1 class="home-title">Let It Show</h1>
       </header>
       <div class="card">
         <div class="card-header">
-       <div class="current-weather">weather</div>
+       <div class="current-weather">
+        weather
+       </div>
           <h2>show movie theater
           </h2>
         </div>
         <div class="card-body container">
          <ul class="moive-theaters"></ul>
-       
         </div>
         <div class="card-footer">
-          <button class="btn">Go Back</button>
+          <button type="submit" class="btn" id="go-back">Go Back</button>
         </div>
       </div>
     </div>
-    <script src="assets/script.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+    ></script>
+
+ 
+<script type="text/javascript" src="assets/script.js"></script>
+<!-- click go back button to home page -->
+<script type="text/javascript">
+    document.getElementById("go-back").onclick = function () {
+        location.href = "home.html";
+    };
+</script>
+
+
   </body>
 </html>
     
