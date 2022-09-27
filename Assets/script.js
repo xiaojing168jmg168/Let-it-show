@@ -8,25 +8,29 @@ var currWeather = document.querySelector(".current-weather");
 
 
 
-//get user search save to local and inset to ul 
-
-
-var city = searchCity.value;
-window.localStorage.setItem('searchedCity', JSON.stringify(city));
-
-var seachedCity = JSON.parse(window.localStorage.getItem('searchedCity'));
-console.log(seachedCity);
-
-
-
-
 function handleSubmit(event){
-
   event.preventDefault();
-  
+//if no input, return
+  if(searchCity.value === ""){
+    return;
+    }
 //click search button to second page
-    location.href = "index.html";
-    getWeather(seachedCity);
+  location.href = "index.html";
+
+//save input data to local when pathname is index.html
+if(location.pathname === "index.html"){
+
+var city = searchCity.value.trim();
+console.log(city);
+localStorage.setItem('searchedCity', JSON.stringify(city));
+//get data from local storage
+var searchedCity = localStorage.getItem('searchedCity');
+console.log(searchedCity);
+//get city name for weather API
+const cityForWeather = searchedCity.split(',')[0].join();
+ getWeather(cityForWeather);
+
+}
 
    //clear input after search
     form.reset(); 
@@ -37,8 +41,8 @@ if(searchForm){
 
 //get weather function
 
-function getWeather(){
-var searchValue = searchCity.value.trim();
+function getWeather(searchValue){
+
 
  fetch("https://api.openweathermap.org/data/2.5/weather?q=" + searchValue+ "&appid=" + APIKey + "&cnt=5") 
 
@@ -78,7 +82,7 @@ var searchValue = searchCity.value.trim();
     })
 }
 
-console.log(getWeather(cleveland));
+// console.log(getWeather("cleveland"));
 //temp from Default: Kelvin to Fahrenheit.
   function kToF(K) {
         return Math.floor((K - 273.15) * 1.8 + 32);
