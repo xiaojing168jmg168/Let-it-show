@@ -8,23 +8,32 @@ var currWeather = document.querySelector(".current-weather");
 
 
 
+//get user search save to local and inset to ul 
+
+
+var city = searchCity.value;
+window.localStorage.setItem('searchedCity', JSON.stringify(city));
+
+var seachedCity = JSON.parse(window.localStorage.getItem('searchedCity'));
+console.log(seachedCity);
+
+
+
+
 function handleSubmit(event){
 
-    event.preventDefault();
-    if(searchCity.value === ""){
-    return;
-    }
-console.log(searchCity.value);
+  event.preventDefault();
+  
 //click search button to second page
     location.href = "index.html";
-    getWeather();
+    getWeather(seachedCity);
 
    //clear input after search
     form.reset(); 
 }
-
+if(searchForm){
  searchForm.addEventListener("submit", handleSubmit);
-
+}
 
 //get weather function
 
