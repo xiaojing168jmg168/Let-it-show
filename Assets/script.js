@@ -11,26 +11,31 @@ function handleSubmit(event){
       
 }
 searchForm.addEventListener("submit", handleSubmit);
-        
-// var myHeaders = new Headers();
-// myHeaders.append("client", "CASE");
-// myHeaders.append("x-api-key", "	j25XOEFpKu6Tfx1iQWGZb4NqNhB88bwa8mJYCrYy");
-// myHeaders.append("authorization", "Basic Q0FTRTpKblNFeWVodFIzazA=");
-// myHeaders.append("territory", "US");
-// myHeaders.append("api-version", "v200");
-// myHeaders.append("geolocation", "33.7625933;-88.1789098");
-// myHeaders.append("device-datetime", "2022-09-25T14:06:21.449Z");
+ 
+function movieTheater(city){
+    
+var myHeaders = new Headers();
+myHeaders.append("client", "CASE");
+myHeaders.append("x-api-key", "	j25XOEFpKu6Tfx1iQWGZb4NqNhB88bwa8mJYCrYy");
+myHeaders.append("authorization", "Basic Q0FTRTpKblNFeWVodFIzazA=");
+myHeaders.append("territory", "US");
+myHeaders.append("api-version", "v200");
+myHeaders.append("geolocation", "33.7625933;-88.1789098");
+myHeaders.append("device-datetime", "2022-09-25T14:06:21.449Z");
 
-// var requestOptions = {
-//   method: 'GET',
-//   headers: myHeaders,
-//   redirect: 'follow'
-// };
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
 
-// fetch("https://api-gate2.movieglu.com/cinemasNearby/?n=5", requestOptions)
-//   .then(response => response.text())
-//   .then(result => console.log(result))
-//   .catch(error => console.log('error', error));
+fetch("https://api-gate2.movieglu.com/cinemasNearby/?n=5", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+}
+
+console.log(movieTheater('cleveland,oh'))
 
 var requestOptions = {
     method: 'GET',
