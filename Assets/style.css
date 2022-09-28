@@ -55,7 +55,24 @@ font-size: 40px;
 font-weight: 400;
 }
 
+.name-date{
+font-size: 23px;
+font-weight: 500;
 
+
+}
+
+.current-weather{
+display: flex;
+justify-content: space-around;
+text-align: center;
+}
+
+#curr-pic{
+
+width: 8%;
+height: 8%;
+}
 .card {
   background-color: hsl(0, 0%, 100%);
   border-radius: 5px;
@@ -142,3 +159,13 @@ button[disabled] {
 }
 
 
+  /* A Media Query max-width: 640px */
+ @media screen and (max-width: 640px) {
+
+.current-weather{
+display: block;
+justify-content: space-around;
+text-align: center;
+}
+
+}

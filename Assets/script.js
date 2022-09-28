@@ -1,43 +1,54 @@
-
 var APIKey = "adf46be5146fd6c70576939f90013837";
 var searchForm = document.querySelector("#user-form");
 var searchBtn = document.querySelector("#search-btn");
-var goBackBtn = document.querySelector("#go-back");
 var searchCity = document.querySelector("#search-city");
 var currWeather = document.querySelector(".current-weather");
+var cardHead = document.querySelector(".card-header");
+var showMovieTheater = document.querySelector(".show-movie-theater");
+var container = document.querySelector(".container");
+var footer = document.querySelector(".card-footer");
 
 
-if(location.pathname === "index.html"){
-saveToLocalAndSwitchPage();
-getCityFromLocal();
-}
+
+function saveToLocalAndHandleSubmit(event){
 
 
-function saveToLocalAndSwitchPage(event){
   event.preventDefault();
-//click search button to second page
-  location.href = "index.html";
-//save input data to local when pathname is index.html
-var city = searchCity.value.trim();
 
+var city = searchCity.value.trim();
+//save city data to local storage
 localStorage.setItem('searchedCity', JSON.stringify(city));
-   //clear input after search
-    form.reset(); 
-}
+
+  $('body').css('background', '#758798');
+cardHead.innerHTML="";
+showMovieTheater.innerHTML = "Show Movie Theater";
+container.innerHTML="";
+var goBackButton = document.createElement("button");
+goBackButton.id="go-back";
+goBackButton.className="btn";
+goBackButton.innerHTML="Go Back";
+// //Go back button
+// goBackButton.addEventListener("click",function(){
+//   booleanValue = false;
+// })
+footer.appendChild(goBackButton);
 
 //get data from local storage
-function getCityFromLocal(){
 var searchedCity = JSON.parse(localStorage.getItem('searchedCity'));
-//get city name for weather API
-const cityForWeather = searchedCity.split(',')[0].join();
- getWeather(cityForWeather);
+  //get city name for weather API
+const cityForWeather = searchedCity.split(',')[0];
 console.log(cityForWeather);
+  getWeather(cityForWeather);
+
+// console.log(getWeather("cleveland"));
 }
 
 
-if(searchForm){
- searchForm.addEventListener("submit", saveToLocalAndSwitchPage);
-}
+searchForm.addEventListener("submit", saveToLocalAndHandleSubmit);
+
+
+
+
 
 //get weather function
 
@@ -58,14 +69,16 @@ function getWeather(searchValue){
     
     //displya current date weather
      var nameEl = document.createElement("div");
-     nameEl.innerHTML= data.name + " (" + currentDay + ")";
+     nameEl.className="name-date";
+     nameEl.innerHTML= data.name + " " + currentDay;
      currWeather.appendChild(nameEl);
     
-     var currPic = document.createElement("div");
+     var img = document.createElement("img");
+     img.id="curr-pic"
      let weatherIcon = data.weather[0].icon;
-     currPic.setAttribute("src",`https://openweathermap.org/img/wn/" ${weatherIcon}"@2x.png`)
-     currPic.setAttribute("alt", data.weather[0].description);
-     currWeather.appendChild(currPic);
+     img.setAttribute("src","https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png")
+     img.setAttribute("alt", data.weather[0].description);
+     currWeather.appendChild(img);
      
      var currTempEl = document.createElement("div");
      currTempEl.innerHTML = `Temperature: ${kToF(data.main.temp)}°F`;
@@ -79,11 +92,65 @@ function getWeather(searchValue){
      currWindEl.innerHTML = `Wind Speed: ${data.wind.speed}MPH`;
      currWeather.appendChild(currWindEl);
 
+     //get latitude and longitude
+     var lon = data.coord.lon;
+console.log(lon);
+     var lat = data.coord.lat;
+console.log(lat);
+
+// movieAddress(lat,lon);
     })
 }
 
-console.log(getWeather("cleveland"));
+
 //temp from Default: Kelvin to Fahrenheit.
   function kToF(K) {
         return Math.floor((K - 273.15) * 1.8 + 32);
     }
+
+
+
+
+ function movieAddress(lat,lon){
+  var myHeaders = new Headers();
+  myHeaders.append("client", "CASE");
+  myHeaders.append("x-api-key", "j25XOEFpKu6Tfx1iQWGZb4NqNhB88bwa8mJYCrYy");
+  myHeaders.append("authorization", "Basic Q0FTRTpKblNFeWVodFIzazA=");
+  myHeaders.append("territory", "US");
+  myHeaders.append("api-version", "v200");
+  myHeaders.append("geolocation", `${lat};${lon}`);
+  myHeaders.append("device-datetime", "2022-09-25T14:06:21.449Z");
+
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+
+  fetch("https://api-gate2.movieglu.com/cinemasNearby/?n=5", requestOptions)
+    .then(response => response.text())
+    .then(function(data){
+      console.log(JSON.stringify(data));
+      //display the data
+      
+      for(let i=0; i<5;i++){
+
+      var cinemaInfo = {
+      cinemaName: data.cinemas[i].cinema_name,
+      cinemaAddress: data.cinemas[i].address
+  };
+      
+      var cinemas = document.createElement("ul");
+      var cinema = document.createElement("li");
+      cinema[0].setAttribute("style","font-size:20px;color:blue;");
+      cinema.innerHTML = cinemaInfo;
+  
+      cinemas.appendChild(cinema);
+      container.appendChild(cinemas);
+      
+}
+})
+  .catch(error => console.log('error', error));
+}
+
+movieAddress(41.4995,-81.6954);
