@@ -5,13 +5,20 @@ var searchCity = document.querySelector("#search-city");
 var currWeather = document.querySelector(".current-weather");
 var cardHead = document.querySelector(".card-header");
 var showMovieTheater = document.querySelector(".show-movie-theater");
-var container = document.querySelector(".container");
+var movieForm=document.querySelector("#movie-form");
+
 var footer = document.querySelector(".card-footer");
 
+var moviesApiKey = "974257a59529a643b1516d5cebdd63c2";
+var container = document.querySelector(".container");
+
+var search = document.querySelector("#search");
 
 
+
+
+//click search city button
 function saveToLocalAndHandleSubmit(event){
-
 
   event.preventDefault();
 
@@ -21,18 +28,12 @@ localStorage.setItem('searchedCity', JSON.stringify(city));
 
   $('body').css('background', '#758798');
 cardHead.innerHTML="";
-showMovieTheater.innerHTML = "Show Movie Theater";
-container.innerHTML="";
-var goBackButton = document.createElement("button");
-goBackButton.id="go-back";
-goBackButton.className="btn";
-goBackButton.innerHTML="Go Back";
-// //Go back button
-// goBackButton.addEventListener("click",function(){
-//   booleanValue = false;
-// })
-footer.appendChild(goBackButton);
+showMovieTheater.innerHTML = "Search Movies";
+ $('#hideform').show();
+searchForm.innerHTML=""
+// container.innerHTML="";
 
+showMovies(apiUrl);
 //get data from local storage
 var searchedCity = JSON.parse(localStorage.getItem('searchedCity'));
   //get city name for weather API
@@ -40,12 +41,13 @@ const cityForWeather = searchedCity.split(',')[0];
 console.log(cityForWeather);
   getWeather(cityForWeather);
 
-// console.log(getWeather("cleveland"));
+scrollToBottom();
+scrollToTop();
+
 }
 
 
 searchForm.addEventListener("submit", saveToLocalAndHandleSubmit);
-
 
 
 
@@ -109,48 +111,54 @@ console.log(lat);
     }
 
 
+// movie API information.
+const apiUrl = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=974257a59529a643b1516d5cebdd63c2';
+const IMGPATH = "https://image.tmdb.org/t/p/w1280";
+const SEARCHAPI =
+    "https://api.themoviedb.org/3/search/movie?&api_key=974257a59529a643b1516d5cebdd63c2&query=";
 
-
- function movieAddress(lat,lon){
-  var myHeaders = new Headers();
-  myHeaders.append("client", "CASE");
-  myHeaders.append("x-api-key", "j25XOEFpKu6Tfx1iQWGZb4NqNhB88bwa8mJYCrYy");
-  myHeaders.append("authorization", "Basic Q0FTRTpKblNFeWVodFIzazA=");
-  myHeaders.append("territory", "US");
-  myHeaders.append("api-version", "v200");
-  myHeaders.append("geolocation", `${lat};${lon}`);
-  myHeaders.append("device-datetime", "2022-09-25T14:06:21.449Z");
-
-  var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
-  };
-
-  fetch("https://api-gate2.movieglu.com/cinemasNearby/?n=5", requestOptions)
-    .then(response => response.text())
+function showMovies(apiUrl){
+    fetch(apiUrl).then(res => res.json())
     .then(function(data){
-      console.log(JSON.stringify(data));
-      //display the data
-      
-      for(let i=0; i<5;i++){
+console.log(data);
+    data.results.forEach(element => {
+      // Creating elemnts for our data inside the container  
+     
+        const el = document.createElement('div');
+        el.id = "movie-item";
+        const image = document.createElement('img');
+        const text = document.createElement('h2');
 
-      var cinemaInfo = {
-      cinemaName: data.cinemas[i].cinema_name,
-      cinemaAddress: data.cinemas[i].address
-  };
-      
-      var cinemas = document.createElement("ul");
-      var cinema = document.createElement("li");
-      cinema[0].setAttribute("style","font-size:20px;color:blue;");
-      cinema.innerHTML = cinemaInfo;
+        text.innerHTML = `${element.title}`;
+        image.src = IMGPATH + element.poster_path;
+        el.appendChild(image);
+        el.appendChild(text);
+    
+        container.appendChild(el);
+    }); 
+});
+}
+
+//submit search input
+movieForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+     
+    const searchTerm = search.value.trim();
+
+    if (searchTerm) {
+        showMovies(SEARCHAPI + searchTerm);
+        search.value = "";
+    }
+});
+
+//scroll down page function
+ const element = document.getElementsByTagName("html")
+const scrollToBottom = (element) => {
+	
+   element.scrollTop = element.scrollHeight;
+}
+
+const scrollToTop = (element) => {
   
-      cinemas.appendChild(cinema);
-      container.appendChild(cinemas);
-      
+   element.scrollTop = 0;
 }
-})
-  .catch(error => console.log('error', error));
-}
-
-movieAddress(41.4995,-81.6954);
