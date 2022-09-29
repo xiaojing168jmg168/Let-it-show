@@ -5,13 +5,20 @@ var searchCity = document.querySelector("#search-city");
 var currWeather = document.querySelector(".current-weather");
 var cardHead = document.querySelector(".card-header");
 var showMovieTheater = document.querySelector(".show-movie-theater");
-var container = document.querySelector(".container");
+var movieForm=document.querySelector("#movie-form");
+
 var footer = document.querySelector(".card-footer");
 
+var moviesApiKey = "974257a59529a643b1516d5cebdd63c2";
+var container = document.querySelector(".container");
+
+var search = document.querySelector("#search");
 
 
+
+
+//click search city button
 function saveToLocalAndHandleSubmit(event){
-
 
   event.preventDefault();
 
@@ -21,18 +28,12 @@ localStorage.setItem('searchedCity', JSON.stringify(city));
 
   $('body').css('background', '#758798');
 cardHead.innerHTML="";
-showMovieTheater.innerHTML = "Show Movie Theater";
-container.innerHTML="";
-var goBackButton = document.createElement("button");
-goBackButton.id="go-back";
-goBackButton.className="btn";
-goBackButton.innerHTML="Go Back";
-// //Go back button
-// goBackButton.addEventListener("click",function(){
-//   booleanValue = false;
-// })
-footer.appendChild(goBackButton);
+showMovieTheater.innerHTML = "Search Movies";
+ $('#hideform').show();
+searchForm.innerHTML=""
+// container.innerHTML="";
 
+showMovies(apiUrl);
 //get data from local storage
 var searchedCity = JSON.parse(localStorage.getItem('searchedCity'));
   //get city name for weather API
@@ -40,12 +41,13 @@ const cityForWeather = searchedCity.split(',')[0];
 console.log(cityForWeather);
   getWeather(cityForWeather);
 
-// console.log(getWeather("cleveland"));
+scrollToBottom();
+scrollToTop();
+
 }
 
 
 searchForm.addEventListener("submit", saveToLocalAndHandleSubmit);
-
 
 
 
@@ -113,6 +115,7 @@ console.log(lat);
 
  var baseUrl = "http://data.tmsapi.com/v1.1";
 
+<<<<<<< HEAD
  var showtimesUrl = baseUrl + '/movies/showings';
 
  var zipCode = `${lat};${lon}`;
@@ -217,3 +220,56 @@ console.log(lat);
 // }
 
 // movieAddress(41.4995,-81.6954);
+=======
+// movie API information.
+const apiUrl = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=974257a59529a643b1516d5cebdd63c2';
+const IMGPATH = "https://image.tmdb.org/t/p/w1280";
+const SEARCHAPI =
+    "https://api.themoviedb.org/3/search/movie?&api_key=974257a59529a643b1516d5cebdd63c2&query=";
+
+function showMovies(apiUrl){
+    fetch(apiUrl).then(res => res.json())
+    .then(function(data){
+console.log(data);
+    data.results.forEach(element => {
+      // Creating elemnts for our data inside the container  
+     
+        const el = document.createElement('div');
+        el.id = "movie-item";
+        const image = document.createElement('img');
+        const text = document.createElement('h2');
+
+        text.innerHTML = `${element.title}`;
+        image.src = IMGPATH + element.poster_path;
+        el.appendChild(image);
+        el.appendChild(text);
+    
+        container.appendChild(el);
+    }); 
+});
+}
+
+//submit search input
+movieForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+     
+    const searchTerm = search.value.trim();
+
+    if (searchTerm) {
+        showMovies(SEARCHAPI + searchTerm);
+        search.value = "";
+    }
+});
+
+//scroll down page function
+ const element = document.getElementsByTagName("html")
+const scrollToBottom = (element) => {
+	
+   element.scrollTop = element.scrollHeight;
+}
+
+const scrollToTop = (element) => {
+  
+   element.scrollTop = 0;
+}
+>>>>>>> e4ebcd8205d3130ee3e20c5f3087e820124110fb
