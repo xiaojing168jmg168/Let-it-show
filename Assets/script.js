@@ -41,9 +41,6 @@ const cityForWeather = searchedCity.split(',')[0];
 console.log(cityForWeather);
   getWeather(cityForWeather);
 
-scrollToBottom();
-scrollToTop();
-
 }
 
 
@@ -93,14 +90,6 @@ function getWeather(searchValue){
       var currWindEl = document.createElement("div");
      currWindEl.innerHTML = `Wind Speed: ${data.wind.speed}MPH`;
      currWeather.appendChild(currWindEl);
-
-     //get latitude and longitude
-     var lon = data.coord.lon;
-console.log(lon);
-     var lat = data.coord.lat;
-console.log(lat);
-
-// movieAddress(lat,lon);
     })
 }
 
@@ -146,19 +135,11 @@ movieForm.addEventListener("submit", (e) => {
     const searchTerm = search.value.trim();
 
     if (searchTerm) {
+      container.innerHTML="";
         showMovies(SEARCHAPI + searchTerm);
         search.value = "";
     }
 });
 
 //scroll down page function
- const element = document.getElementsByTagName("html")
-const scrollToBottom = (element) => {
-	
-   element.scrollTop = element.scrollHeight;
-}
-
-const scrollToTop = (element) => {
-  
-   element.scrollTop = 0;
-}
+ 
