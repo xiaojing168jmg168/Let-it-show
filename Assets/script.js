@@ -115,7 +115,6 @@ console.log(lat);
 
  var baseUrl = "http://data.tmsapi.com/v1.1";
 
-<<<<<<< HEAD
  var showtimesUrl = baseUrl + '/movies/showings';
 
  var zipCode = `${lat};${lon}`;
@@ -220,56 +219,3 @@ console.log(lat);
 // }
 
 // movieAddress(41.4995,-81.6954);
-=======
-// movie API information.
-const apiUrl = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=974257a59529a643b1516d5cebdd63c2';
-const IMGPATH = "https://image.tmdb.org/t/p/w1280";
-const SEARCHAPI =
-    "https://api.themoviedb.org/3/search/movie?&api_key=974257a59529a643b1516d5cebdd63c2&query=";
-
-function showMovies(apiUrl){
-    fetch(apiUrl).then(res => res.json())
-    .then(function(data){
-console.log(data);
-    data.results.forEach(element => {
-      // Creating elemnts for our data inside the container  
-     
-        const el = document.createElement('div');
-        el.id = "movie-item";
-        const image = document.createElement('img');
-        const text = document.createElement('h2');
-
-        text.innerHTML = `${element.title}`;
-        image.src = IMGPATH + element.poster_path;
-        el.appendChild(image);
-        el.appendChild(text);
-    
-        container.appendChild(el);
-    }); 
-});
-}
-
-//submit search input
-movieForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-     
-    const searchTerm = search.value.trim();
-
-    if (searchTerm) {
-        showMovies(SEARCHAPI + searchTerm);
-        search.value = "";
-    }
-});
-
-//scroll down page function
- const element = document.getElementsByTagName("html")
-const scrollToBottom = (element) => {
-	
-   element.scrollTop = element.scrollHeight;
-}
-
-const scrollToTop = (element) => {
-  
-   element.scrollTop = 0;
-}
->>>>>>> e4ebcd8205d3130ee3e20c5f3087e820124110fb
