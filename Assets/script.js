@@ -1,43 +1,56 @@
-
 var APIKey = "adf46be5146fd6c70576939f90013837";
 var searchForm = document.querySelector("#user-form");
 var searchBtn = document.querySelector("#search-btn");
-var goBackBtn = document.querySelector("#go-back");
 var searchCity = document.querySelector("#search-city");
 var currWeather = document.querySelector(".current-weather");
+var cardHead = document.querySelector(".card-header");
+var showMovieTheater = document.querySelector(".show-movie-theater");
+var movieForm=document.querySelector("#movie-form");
+
+var footer = document.querySelector(".card-footer");
+
+var moviesApiKey = "974257a59529a643b1516d5cebdd63c2";
+var container = document.querySelector(".container");
+
+var search = document.querySelector("#search");
 
 
-if(location.pathname === "index.html"){
-saveToLocalAndSwitchPage();
-getCityFromLocal();
-}
 
 
-function saveToLocalAndSwitchPage(event){
+//click search city button
+function saveToLocalAndHandleSubmit(event){
+
   event.preventDefault();
-//click search button to second page
-  location.href = "index.html";
-//save input data to local when pathname is index.html
+
 var city = searchCity.value.trim();
-
+//save city data to local storage
 localStorage.setItem('searchedCity', JSON.stringify(city));
-   //clear input after search
-    form.reset(); 
-}
 
+  $('body').css('background', '#758798');
+cardHead.innerHTML="";
+showMovieTheater.innerHTML = "Search Movies";
+ $('#hideform').show();
+searchForm.innerHTML=""
+// container.innerHTML="";
+
+showMovies(apiUrl);
 //get data from local storage
-function getCityFromLocal(){
 var searchedCity = JSON.parse(localStorage.getItem('searchedCity'));
-//get city name for weather API
-const cityForWeather = searchedCity.split(',')[0].join();
- getWeather(cityForWeather);
+  //get city name for weather API
+const cityForWeather = searchedCity.split(',')[0];
 console.log(cityForWeather);
+  getWeather(cityForWeather);
+
+scrollToBottom();
+scrollToTop();
+
 }
 
 
-if(searchForm){
- searchForm.addEventListener("submit", saveToLocalAndSwitchPage);
-}
+searchForm.addEventListener("submit", saveToLocalAndHandleSubmit);
+
+
+
 
 //get weather function
 
@@ -58,14 +71,16 @@ function getWeather(searchValue){
     
     //displya current date weather
      var nameEl = document.createElement("div");
-     nameEl.innerHTML= data.name + " (" + currentDay + ")";
+     nameEl.className="name-date";
+     nameEl.innerHTML= data.name + " " + currentDay;
      currWeather.appendChild(nameEl);
     
-     var currPic = document.createElement("div");
+     var img = document.createElement("img");
+     img.id="curr-pic"
      let weatherIcon = data.weather[0].icon;
-     currPic.setAttribute("src",`https://openweathermap.org/img/wn/" ${weatherIcon}"@2x.png`)
-     currPic.setAttribute("alt", data.weather[0].description);
-     currWeather.appendChild(currPic);
+     img.setAttribute("src","https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png")
+     img.setAttribute("alt", data.weather[0].description);
+     currWeather.appendChild(img);
      
      var currTempEl = document.createElement("div");
      currTempEl.innerHTML = `Temperature: ${kToF(data.main.temp)}°F`;
@@ -82,8 +97,61 @@ function getWeather(searchValue){
     })
 }
 
-console.log(getWeather("cleveland"));
+
 //temp from Default: Kelvin to Fahrenheit.
   function kToF(K) {
         return Math.floor((K - 273.15) * 1.8 + 32);
     }
+
+
+// movie API information.
+const apiUrl = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=974257a59529a643b1516d5cebdd63c2';
+const IMGPATH = "https://image.tmdb.org/t/p/w1280";
+const SEARCHAPI =
+    "https://api.themoviedb.org/3/search/movie?&api_key=974257a59529a643b1516d5cebdd63c2&query=";
+
+function showMovies(apiUrl){
+    fetch(apiUrl).then(res => res.json())
+    .then(function(data){
+console.log(data);
+    data.results.forEach(element => {
+      // Creating elemnts for our data inside the container  
+     
+        const el = document.createElement('div');
+        el.id = "movie-item";
+        const image = document.createElement('img');
+        const text = document.createElement('h2');
+
+        text.innerHTML = `${element.title}`;
+        image.src = IMGPATH + element.poster_path;
+        el.appendChild(image);
+        el.appendChild(text);
+    
+        container.appendChild(el);
+    }); 
+});
+}
+
+//submit search input
+movieForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+     
+    const searchTerm = search.value.trim();
+
+    if (searchTerm) {
+        showMovies(SEARCHAPI + searchTerm);
+        search.value = "";
+    }
+});
+
+//scroll down page function
+ const element = document.getElementsByTagName("html")
+const scrollToBottom = (element) => {
+	
+   element.scrollTop = element.scrollHeight;
+}
+
+const scrollToTop = (element) => {
+  
+   element.scrollTop = 0;
+}
