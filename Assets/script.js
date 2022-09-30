@@ -6,12 +6,10 @@ var currWeather = document.querySelector(".current-weather");
 var cardHead = document.querySelector(".card-header");
 var showMovieTheater = document.querySelector(".show-movie-theater");
 var movieForm=document.querySelector("#movie-form");
-
+var card = document.querySelector(".card");
 var footer = document.querySelector(".card-footer");
-
 var moviesApiKey = "974257a59529a643b1516d5cebdd63c2";
 var container = document.querySelector(".container");
-
 var search = document.querySelector("#search");
 
 
@@ -22,6 +20,8 @@ function saveToLocalAndHandleSubmit(event){
 
   event.preventDefault();
 
+
+card.style.maxWidth = "1500px";
 var city = searchCity.value.trim();
 //save city data to local storage
 localStorage.setItem('searchedCity', JSON.stringify(city));
@@ -41,8 +41,6 @@ const cityForWeather = searchedCity.split(',')[0];
 console.log(cityForWeather);
   getWeather(cityForWeather);
 
-// scrollToBottom();
-// scrollToTop();
 
 }
 
@@ -139,10 +137,9 @@ movieForm.addEventListener("submit", (e) => {
     const searchTerm = search.value.trim();
 
     if (searchTerm) {
-        container.innerHTML="";
+	    container.innerHTML="";
         showMovies(SEARCHAPI + searchTerm);
         search.value = "";
     }
 });
-
 
