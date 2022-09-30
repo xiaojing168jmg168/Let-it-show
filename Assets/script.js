@@ -82,4 +82,4 @@ console.log(getWeather(cleveland));
 //temp from Default: Kelvin to Fahrenheit.
   function kToF(K) {
         return Math.floor((K - 273.15) * 1.8 + 32);
-    
+  }
