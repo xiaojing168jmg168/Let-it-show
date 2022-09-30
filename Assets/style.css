@@ -229,7 +229,7 @@ color: #fff;
 }
 
 
-  /* A Media Query max-width: 640px */
+  /* A Media Query max-width: 992px */
  @media screen and (max-width: 992px) {
 
 .current-weather{
