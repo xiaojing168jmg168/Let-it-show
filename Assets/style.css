@@ -93,6 +93,20 @@ height: 8%;
 #hideform {display:none;}
 
 
+
+}
+
+.current-weather{
+display: flex;
+justify-content: space-around;
+text-align: center;
+}
+
+#curr-pic{
+
+width: 8%;
+height: 8%;
+}
 .card {
   background-color: hsl(0, 0%, 100%);
   border-radius: 5px;
@@ -232,7 +246,6 @@ width: 70%;
 height:auto;
 }
 
-}
 
   /* A Media Query max-width: 640px */
  @media screen and (max-width: 640px) {

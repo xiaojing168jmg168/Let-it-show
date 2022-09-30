@@ -89,7 +89,6 @@ function getWeather(searchValue){
       var currWindEl = document.createElement("div");
      currWindEl.innerHTML = `Wind Speed: ${data.wind.speed}MPH`;
      currWeather.appendChild(currWindEl);
-
     })
 }
 
@@ -135,9 +134,13 @@ movieForm.addEventListener("submit", (e) => {
     const searchTerm = search.value.trim();
 
     if (searchTerm) {
-	    container.innerHTML="";
+
+      container.innerHTML="";
+
+
         showMovies(SEARCHAPI + searchTerm);
         search.value = "";
     }
 });
+
 
