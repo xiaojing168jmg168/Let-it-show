@@ -94,6 +94,13 @@ function getWeather(searchValue){
      currWindEl.innerHTML = `Wind Speed: ${data.wind.speed}MPH`;
      currWeather.appendChild(currWindEl);
 
+     //get latitude and longitude
+     var lon = data.coord.lon;
+console.log(lon);
+     var lat = data.coord.lat;
+console.log(lat);
+
+// movieAddress(lat,lon);
     })
 }
 
@@ -144,5 +151,4 @@ movieForm.addEventListener("submit", (e) => {
         search.value = "";
     }
 });
-
 
