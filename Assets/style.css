@@ -230,7 +230,7 @@ color: #fff;
 
 
   /* A Media Query max-width: 640px */
- @media screen and (max-width: 900px) {
+ @media screen and (max-width: 992px) {
 
 .current-weather{
 display: block;
@@ -241,7 +241,7 @@ text-align: center;
 .container{
 width: 100%;
 justify-content: center;
-columns: 2;
+columns: 1;
 -webkit-columns: 2;
 -moz-columns: 2;
 }
