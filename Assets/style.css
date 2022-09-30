@@ -22,7 +22,6 @@ body {
  background: url("images/let-it-show-3.jpg") no-repeat center center fixed;
   background-size: cover;
   height: 100%;
-  overflow: hidden;
 }
 
 
@@ -93,9 +92,6 @@ height: 8%;
 
 #hideform {display:none;}
 
-
-
-}
 
 .current-weather{
 display: flex;
@@ -234,7 +230,7 @@ color: #fff;
 
 
   /* A Media Query max-width: 640px */
- @media screen and (max-width: 640px) {
+ @media screen and (max-width: 900px) {
 
 .current-weather{
 display: block;
@@ -248,5 +244,9 @@ justify-content: center;
 columns: 2;
 -webkit-columns: 2;
 -moz-columns: 2;
+}
+#movie-item {
+  width: 100%;
+  height: auto;
 }
 }

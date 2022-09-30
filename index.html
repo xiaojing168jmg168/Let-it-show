@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Let It Show</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="Assets\style.css" />
 </head>
@@ -27,7 +28,7 @@
                 placeholder="Search"
                 class="search"
             />
-<button type="submit" class="btn" id="search-btn">Submit</button>
+         <button type="submit" class="btn" id="search-btn">Submit</button>
         </form></div>
         <div class="card-header">
           <p class="home-describe">Find showtimes and weather in any city of your choice!
@@ -38,8 +39,12 @@
 
        <form id="user-form">
            <label for="formGroupExampleInput" class="search-label">Search for a City:</label>
-              <input type="text" id="search-city" placeholder="cleveland,oh" required>
-           <button type="submit" class="btn" id="search-btn">search</button>
+              <!-- <input type="text" id="search-city" placeholder="cleveland,oh" required> -->
+              <input class="input is-danger" id="search-city" type="text" placeholder="Cleveland, Oh">
+           <!-- <button type="submit" class="btn" id="search-btn">search</button> -->
+           <button type="submit" id= "search-btn" class="button is-danger is-outlined is-large">
+            Search
+          </button>
         </form>
 <div class="container"></div>
 
