@@ -1,9 +1,10 @@
 
 ## User Story
 
-AS A movie lover who frequents movie theaters
+AS A movie lover who also enjoys fair weather conditions
 
-I WANT to find showtimes for theaters in any city of my choosing and I also want to know what the weather is for the current day
+I WANT to search for my favorite films and I also want to know what the weather is for the current day
+
 SO THAT I can catch whatever movie i want to see if the weather permits
 
 ## Acceptance Critera
