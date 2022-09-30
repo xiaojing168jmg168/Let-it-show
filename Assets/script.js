@@ -40,8 +40,6 @@ var searchedCity = JSON.parse(localStorage.getItem('searchedCity'));
 const cityForWeather = searchedCity.split(',')[0];
 console.log(cityForWeather);
   getWeather(cityForWeather);
-
-
 }
 
 
