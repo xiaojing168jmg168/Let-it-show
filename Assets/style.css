@@ -272,6 +272,11 @@ display: block;
 justify-content: space-around;
 text-align: center;
 }
+  #search{
+margin-left: 8%;
+width: 30%;
+font-size: 20px;
+}
 
 .container {
 /* width: 100%; */
