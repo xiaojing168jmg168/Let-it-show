@@ -93,6 +93,21 @@ height: 8%;
 
 #hideform {display:none;}
 
+.current-weather {
+display: flex;
+justify-content: space-around;
+text-align: center;
+}
+
+#curr-pic {
+
+width: 8%;
+height: 8%;
+}
+
+
+#hideform {display:none;}
+
 
 .current-weather{
 display: flex;
@@ -178,8 +193,8 @@ font-weight: 50;
     0px;
   color: hsl(0, 0%, 100%);
   display: inline-block;
-  font-size: 23px;
-  line-height: 17px;
+  font-size: 22px;
+  line-height: 22px;
   height: 45px;
   margin: 16px 16px 16px 20px;
   padding: 14px 34px;
@@ -302,26 +317,4 @@ font-size: 20px;
 font-weight: bold;
 text-align: center;
 color: #fff;
-}
-
-
-  /* A Media Query max-width: 992px */
- @media screen and (max-width: 992px) {
-
-.current-weather{
-display: block;
-justify-content: space-around;
-text-align: center;
-}
-
-.container{
-width: 100%;
-justify-content: center;
-columns: 1;
--webkit-columns: 2;
--moz-columns: 2;
-}
-#movie-item {
-  width: 100%;
-  height: auto;
-}
+}}}
