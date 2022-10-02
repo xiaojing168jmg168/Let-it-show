@@ -94,28 +94,6 @@ height: 8%;
 #hideform {display:none;}
 
 
-<<<<<<< HEAD
-=======
-
-}
-
-.current-weather {
-display: flex;
-justify-content: space-around;
-text-align: center;
-}
-
-#curr-pic {
-
-width: 8%;
-height: 8%;
-}
-
-
-#hideform {display:none;}
-
-
->>>>>>> 19bb8ffd024fdce54b21dc64f3e3d55b2f4a84e8
 .current-weather{
 display: flex;
 justify-content: space-around;
@@ -223,17 +201,11 @@ button[disabled] {
 /* movie container style */
 .container{
 width: 100%;
-<<<<<<< HEAD
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-=======
 
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
 
->>>>>>> 19bb8ffd024fdce54b21dc64f3e3d55b2f4a84e8
 columns: 4;
 -webkit-columns: 4;
 -moz-columns: 4;
@@ -331,7 +303,6 @@ font-weight: bold;
 text-align: center;
 color: #fff;
 }
-<<<<<<< HEAD
 
 
   /* A Media Query max-width: 992px */
@@ -354,6 +325,3 @@ columns: 1;
   width: 100%;
   height: auto;
 }
-}
-=======
->>>>>>> 19bb8ffd024fdce54b21dc64f3e3d55b2f4a84e8
