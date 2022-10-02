@@ -1,12 +1,12 @@
 
-## User Story
+# User Story
 
 AS A movie lover and a fan of fair weather conditions
 
 I WANT an application that gives me access to an extensive movie database and also showcases the weather for whichever city I choose
 
 
-## Acceptance Critera
+# Acceptance Critera
 
 <b>GIVEN</b> a application with a single form input
 <b>WHEN I</b> search for a city 
@@ -15,17 +15,19 @@ I WANT an application that gives me access to an extensive movie database and al
 <b>THEN I</b> am presented with movie titles in a list format
 <b>WHEN I</b> click the refresh button I will return to the original page
 
-## Tech Used
-HTML
-CSS
-Javascript
-Bulma framework
-JSON
-Jquery
-Moments
-API
+# Tech Used
+- HTML
+- CSS
+- Javascript
+- Bulma
+- JSON
+- Jquery
+- Moments
+- API
 
-## Mock Up
+# Mock Up
+The following gif shows the functionality of the application:
 
+![](Let-It-Show.gif.gif)
 
 
