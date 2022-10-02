@@ -56,7 +56,7 @@ searchForm.addEventListener("submit", saveToLocalAndHandleSubmit);
 
 function getWeather(searchValue){
 
-
+//using Jquery to append the Apikey variable as a parameter
  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=${APIKey}&cnt=5`) 
 
   .then(function(response){
@@ -151,4 +151,3 @@ movieForm.addEventListener("submit", (e) => {
         search.value = "";
     }
 });
-
