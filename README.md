@@ -8,12 +8,22 @@ I WANT an application that gives me access to an extensive movie database and al
 
 ## Acceptance Critera
 
-GIVEN a application with a single form input
-WHEN I search for a city 
-THEN I am presented with the city name, the date, the current conditions of that city, a list of new movies,  and also another input form which allows me to search any movie i want by name or closley related to the name
-WHEN I search for a movie
-THEN I am presented with movie titles in a list format
-WHEN i return to the previous page and click the search bar my recent searches will appear
+<b>GIVEN</b> a application with a single form input
+<b>WHEN I</b> search for a city 
+<b>THEN I</b> am presented with the city name, the date, the current conditions of that city, a list of new movies, and also another input form which allows me to search any movie i want by name or closley related to the name
+<b>WHEN I</b> search for a movie
+<b>THEN I</b> am presented with movie titles in a list format
+<b>WHEN I</b> click the refresh button I will return to the original page
+
+## Tech Used
+HTML
+CSS
+Javascript
+Bulma framework
+JSON
+Jquery
+Moments
+API
 
 ## Mock Up
 
