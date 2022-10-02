@@ -177,8 +177,8 @@ font-weight: 50;
     0px;
   color: hsl(0, 0%, 100%);
   display: inline-block;
-  font-size: 22px;
-  line-height: 22px;
+  font-size: 23px;
+  line-height: 17px;
   height: 45px;
   margin: 16px 16px 16px 20px;
   padding: 14px 34px;
@@ -202,7 +202,9 @@ button[disabled] {
 /* movie container style */
 .container{
 width: 100%;
-
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
 columns: 4;
 -webkit-columns: 4;
 -moz-columns: 4;
