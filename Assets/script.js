@@ -52,7 +52,7 @@ searchForm.addEventListener("submit", saveToLocalAndHandleSubmit);
 
 function getWeather(searchValue){
 
-
+//using Jquery to append the Apikey variable as a parameter
  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=${APIKey}&cnt=5`) 
 
   .then(function(response){
@@ -89,6 +89,14 @@ function getWeather(searchValue){
       var currWindEl = document.createElement("div");
      currWindEl.innerHTML = `Wind Speed: ${data.wind.speed}MPH`;
      currWeather.appendChild(currWindEl);
+
+     //get latitude and longitude
+     var lon = data.coord.lon;
+console.log(lon);
+     var lat = data.coord.lat;
+console.log(lat);
+
+// movieAddress(lat,lon);
     })
 }
 
@@ -135,6 +143,7 @@ movieForm.addEventListener("submit", (e) => {
 
     if (searchTerm) {
 
+
       container.innerHTML="";
 
 
@@ -142,5 +151,3 @@ movieForm.addEventListener("submit", (e) => {
         search.value = "";
     }
 });
-
-

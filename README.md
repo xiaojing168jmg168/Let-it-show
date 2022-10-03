@@ -1,21 +1,33 @@
 
-## User Story
+# User Story
 
-AS A movie lover who frequents movie theaters
+AS A movie lover and a fan of fair weather conditions
 
-I WANT to find showtimes for theaters in any city of my choosing and I also want to know what the weather is for the current day
-SO THAT I can catch whatever movie i want to see if the weather permits
+I WANT an application that gives me access to an extensive movie database and also showcases the weather for whichever city I choose
 
-## Acceptance Critera
 
-GIVEN a application with a single form input
-WHEN I search for a city 
-THEN I am presented with the city name, the date, names and addresses of movie theaters in that city along with the current conditions of that city and that city is added to the search history
-WHEN I click that particular movie theater
-THEN I am presented with movie titles and showtimes for these movies in a list format
-WHEN i return to the previous page and click the search bar my recent searches will appear
+# Acceptance Critera
 
-## Mock Up
+<b>GIVEN</b> a application with a single form input
+<b>WHEN I</b> search for a city 
+<b>THEN I</b> am presented with the city name, the date, the current conditions of that city, a list of new movies, and also another input form which allows me to search any movie i want by name or closley related to the name
+<b>WHEN I</b> search for a movie
+<b>THEN I</b> am presented with movie titles in a list format
+<b>WHEN I</b> click the refresh button I will return to the original page
 
+# Tech Used
+- HTML
+- CSS
+- Javascript
+- Bulma
+- JSON
+- Jquery
+- Moments
+- API
+
+# Mock Up
+The following gif shows the functionality of the application:
+
+![](Let-It-Show.gif.gif)
 
 
