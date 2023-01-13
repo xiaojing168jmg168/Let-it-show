@@ -14,6 +14,7 @@ I WANT an application that gives me access to an extensive movie database and al
 <b>WHEN I</b> search for a movie
 <b>THEN I</b> am presented with movie titles in a list format
 <b>WHEN I</b> click the refresh button I will return to the original page
+<img width="810" alt="let-it-show" src="https://user-images.githubusercontent.com/110792983/212408120-91f48f17-1a38-4883-b0c1-9820684d51e4.png">
 
 # Tech Used
 - HTML
